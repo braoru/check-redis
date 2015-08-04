@@ -1,4 +1,4 @@
-# check-elasticsearch
+# check-redis
 
 #Install
 
