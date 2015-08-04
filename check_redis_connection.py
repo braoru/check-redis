@@ -124,13 +124,6 @@ if __name__ == '__main__':
             print("-----------")
             print(test_string_echo)
 
-        if test_string_echo == test_string:
-            status = "OK"
-            echo_message = "Echo match"
-        else:
-            status = "Critical"
-            echo_message = "Echo does not match" \
-
         #get request time
         stop_time = datetime.now()
         elapsed_time = (stop_time - start_time)
