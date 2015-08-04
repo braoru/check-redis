@@ -3,20 +3,26 @@
 #Install
 
 ##Install check
-
 ```Bash
-git clone git@github.com:braoru/check-elasticsearch.git
-virtualenv check-elasticsearch
-cd check-elasticsearch
+git clone git@github.com:braoru/check-redis.git
+virtualenv check-redis
+cd check-redis
 source bin/activate
 pip install --upgrade pip
 pip install -r requirement.txt
 
 ```
 
-##Indexed docs
+##Redis check connection with echo
 ```Bash
-python check_elasticsearch_http_indexed_docs.py -H myels -w 3000 -c 2000 -p 9200 -s http
-OK: 4258 docs indexed in 5s  | '5s_indexed_doc'=4258;3000;2000;;;
+python check_redis_connection.py -H XXX
+OK: Redis connection successful | 'connection_delay'=18[ms];50;100;;; 
+
+```
+
+##Redis check ping
+```Bash
+python check_redis_ping.py -H XXX
+OK: Success to ping-pong 
 
 ```
