@@ -109,8 +109,8 @@ class OutputFormatHelpers(object):
             cls,
             label,
             value,
-            warn,
-            crit,
+            warn='',
+            crit='',
             UOM='',
             min='',
             max=''
