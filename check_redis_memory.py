@@ -142,6 +142,8 @@ if __name__ == '__main__':
                 value=redis_memory_used,
                 warn=s_warning,
                 crit=s_critical,
+                min=0,
+                max=redis_maxmemory,
                 UOM='B'
             ),
             #Format perf data string
