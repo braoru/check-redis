@@ -29,10 +29,9 @@ author = "Sebastien Pasche"
 maintainer = "Sebastien Pasche"
 version = "0.0.1"
 
-import collections
 import redis
+from hurry.filesize import size, alternative
 from pprint import pprint
-
 
 class RedisCheckHelpers(object):
     @classmethod
@@ -58,6 +57,51 @@ class RedisCheckHelpers(object):
 
         return parser
 
+    @classmethod
+    def get_info(
+            cls,
+            redis_con=None,
+            debug=False
+    ):
+        if not isinstance(redis_con, redis.StrictRedis):
+            raise Exception("Cannot get informations if not connected to redis")
+
+        info = redis_con.info('all')
+
+        if debug:
+            print("info")
+            print("----")
+            pprint(info)
+
+        return info
+
+    @classmethod
+    def get_maxmemory(
+            cls,
+            redis_con=None,
+            debug=False
+    ):
+        if not isinstance(redis_con, redis.StrictRedis):
+            raise Exception("Cannot get maxmemory if not connected to redis")
+
+        maxmemory = long(redis_con.config_get('maxmemory')['maxmemory'])
+
+        if debug:
+            print("Current maxmemory")
+            print("-----------------")
+            print(
+                "maxmemory: {m}".format(
+                    m=size(
+                        maxmemory,
+                        alternative
+                    )
+                )
+            )
+
+        if maxmemory == 0:
+            raise Exception("maxmemory = 0 cannot evaluate usage")
+
+        return maxmemory
 
 class OutputFormatHelpers(object):
     @classmethod
