@@ -125,7 +125,7 @@ if __name__ == '__main__':
             print(
                 "maxclients: {m}".format(
                     m=size(
-                        maxclients,
+                        redis_maxclients,
                         alternative
                     )
                 )
