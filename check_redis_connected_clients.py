@@ -116,18 +116,12 @@ if __name__ == '__main__':
             print("-----------")
             print(
                 "connected_clients: {m}".format(
-                    m=size(
-                        redis_connected_clients,
-                        alternative
-                    )
+                    m=redis_connected_clients
                 )
             )
             print(
                 "maxclients: {m}".format(
-                    m=size(
-                        redis_maxclients,
-                        alternative
-                    )
+                    m=redis_maxclients
                 )
             )
 
